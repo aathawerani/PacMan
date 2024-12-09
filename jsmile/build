@@ -1,0 +1,41 @@
+if ! [ -a "cppsmile/libsmile.a" ]
+then
+echo libsmile.a was not found in smile directory
+exit -1
+fi
+
+if ! [ -a "java/smile/Network.java" ]
+then
+echo Network.java was not found in jsmile/java directory
+exit -2
+fi
+
+# MacOSX has JDK headers here:
+export JINC=/usr/lib/jvm/java-1.8.0-openjdk-amd64/include
+
+if ! [ -a "$JINC/jni.h" ]
+then
+echo jni.h was not found
+echo JDK include directory is configured to: $JINC
+echo make sure it is correctly set for your environment
+echo by setting JINC variable in this build script
+exit -3
+fi
+
+echo compiling java source
+cd java
+rm -f *.jar *.so *.class 
+javac smile/*.java smile/learning/*.java
+jar cf smile.jar -C . smile
+javac -cp smile.jar testApp.java
+
+echo compiling JNI wrapper
+g++ -O3 -DNDEBUG -feliminate-unused-debug-symbols -fpic -s -shared -o libjsmile.so ../*.cpp -I$JINC -I$JINC/linux -I../cppsmile -L../cppsmile -lsmilearn -lsmile
+
+# on MacOSX, use the following command instead
+# g++ -O3 -DNDEBUG -feliminate-unused-debug-symbols -dynamiclib -o libjsmile.jnilib ../*.cpp -I$JINC -I$JINC/linux -I../cppsmile -L../cppsmile -lsmilearn -lsmile
+
+# on HPUX, use the following command instead
+# aCC +DD64 -O3 -DNDEBUG -b -dynamic -AA -w -mt -o libjsmile.so ../*.cpp -I$JINC -I$JINC/hp-ux -I../cppsmile -L../cppsmile -lsmilearn -lsmile
+
+ls -l *.so *.jar

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Strategy_Tendency">
+			<state id="Attack" />
+			<state id="Defence" />
+			<state id="Attack_Defence" />
+			<probabilities>0.8091047205083282 0.08376242375794554 0.1071328557337263</probabilities>
+		</cpt>
+		<cpt id="First_move">
+			<state id="Center" />
+			<state id="Side" />
+			<state id="Corner" />
+			<parents>Strategy_Tendency</parents>
+			<probabilities>0.8766270752102473 0.01321417945487215 0.1101587453348806 0.2216073027526414 0.4028602922408522 0.3755324050065066 0.1694817037877859 0.5673994824419244 0.2631188137702897</probabilities>
+		</cpt>
+		<cpt id="Situation">
+			<state id="UnderAttack" />
+			<state id="BeforeWin" />
+			<state id="Trap" />
+			<state id="Initial" />
+			<state id="Loose" />
+			<state id="Dense" />
+			<state id="BeforeWin_UnderAttack" />
+			<probabilities>0.2 0.05 0.1212121212121213 0.2030303 0.05000000303030304 0.3757575757575757 0</probabilities>
+		</cpt>
+		<cpt id="Strategy">
+			<state id="Attack" />
+			<state id="Defence" />
+			<state id="Attack_Defence" />
+			<parents>Situation Strategy_Tendency</parents>
+			<probabilities>0.1105935486107963 0.2602462121590228 0.6291602392301809 0.03923002920743085 0.9193720651210202 0.0413979056715488 0.1528329135875395 0.5249492015711491 0.3222178848413114 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.7614495023565374 0.2080623116847535 0.03048818595870904 0.1685863175462801 0.746934033321615 0.08447964913210498 0.128663723901204 0.0962360153879096 0.7751002607108865 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.5233769237165786 0.1813341229436142 0.2952889533398072 0.08124534613925907 0.6478900762593813 0.2708645776013597 0.07325995837256855 0.2489480542033999 0.6777919874240316 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="Block">
+			<state id="yes" />
+			<state id="no" />
+			<parents>Strategy</parents>
+			<probabilities>0.1428571428571429 0.8571428571428571 0.7777777777777777 0.2222222222222222 0.4444444444444445 0.5555555555555556</probabilities>
+		</cpt>
+		<cpt id="Build_3">
+			<state id="yes" />
+			<state id="no" />
+			<parents>Strategy</parents>
+			<probabilities>0.6938775510204082 0.3061224489795918 0.2222222222222222 0.7777777777777777 0.3555555555555556 0.6444444444444445</probabilities>
+		</cpt>
+		<cpt id="Time_Taken">
+			<state id="Long" />
+			<state id="Medium" />
+			<state id="Immediate" />
+			<parents>Situation</parents>
+			<probabilities>0.3333333333333333 0.3333333333333333 0.3333333333333334 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333334 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333333 0.3333333333333334 0.3333333333333333 0.3333333333333333 0.3333333333333333</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.3393.0" name="TicTacToe" faultnameformat="nodestate">
+			<node id="Strategy_Tendency">
+				<name>Strategy Tendency</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>227 181 284 216</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="First_move">
+				<name>First move</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>134 401 195 439</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Block">
+				<name>Block</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>334 516 403 559</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Build_3">
+				<name>Build 3</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>554 534 603 564</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Strategy">
+				<name>Strategy</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>342 339 399 374</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Situation">
+				<name>Situation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>529 193 570 218</position>
+				<barchart active="true" width="176" height="144" />
+			</node>
+			<node id="Time_Taken">
+				<name>Time Taken</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>614 370 682 412</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

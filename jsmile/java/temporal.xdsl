@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="ProductQuality" numsamples="1000">
+	<nodes>
+		<cpt id="High_Quality_of_the_Product" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Company_s_Current_Reputation" dynamic="anchor">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.9 0.09999999999999998</probabilities>
+		</cpt>
+		<noisymax id="Product_Reputation" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>Company_s_Current_Reputation</parents>
+			<strengths>0 1</strengths>
+			<parameters>0.7999804687500001 0.2000195312499999 0 1 0.09999999999999998 0.9</parameters>
+		</noisymax>
+		<cpt id="Aggressive_Advertizing" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="High_Production_Cost" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>High_Quality_of_the_Product Aggressive_Advertizing</parents>
+			<probabilities>0.4015 0.5985 0.37 0.63 0.145 0.855 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="High_Price" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>High_Production_Cost</parents>
+			<probabilities>0.44 0.5600000000000001 0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="High_Sales" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>High_Price Product_Reputation</parents>
+			<probabilities>0.8200000000000001 0.1799999999999999 0.1 0.9 0.874 0.126 0.37 0.63</probabilities>
+		</cpt>
+		<cpt id="High_Profits" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>High_Sales High_Production_Cost</parents>
+			<probabilities>0.91 0.08999999999999997 0.9280000000000001 0.07199999999999995 0.1 0.9 0.28 0.72</probabilities>
+		</cpt>
+		<cpt id="Large_Market_Share" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>High_Sales</parents>
+			<probabilities>0.9335 0.0665 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Company_s_Reputation" dynamic="plate">
+			<state id="True" />
+			<state id="False" />
+			<parents>Company_s_Current_Reputation</parents>
+			<probabilities>0.9200000000000002 0.07999999999999985 0.2 0.8</probabilities>
+		</cpt>
+	</nodes>
+	<dynamic numslices="10">
+		<noisymax id="Product_Reputation" order="1">
+			<parents>Product_Reputation Aggressive_Advertizing</parents>
+			<strengths>0 1 0 1</strengths>
+			<parameters>0.8000361328125001 0.1999638671874999 0 1 0.09996289062500008 0.9000371093749999 0 1 0.09999999999999998 0.9</parameters>
+		</noisymax>
+		<noisymax id="Product_Reputation" order="2">
+			<parents>High_Quality_of_the_Product</parents>
+			<strengths>0 1 0 1 0 1</strengths>
+			<parameters>0.8000328125 0.1999671875 0 1 0.09995957031250002 0.9000404296875 0 1 0.7000572265625 0.2999427734375 0 1 0.09999999999999998 0.9</parameters>
+		</noisymax>
+		<cpt id="High_Sales" order="1">
+			<parents>Aggressive_Advertizing</parents>
+			<probabilities>0.8992 0.1008 0.874 0.126 0.496 0.504 0.37 0.63 0.8560000000000001 0.1439999999999999 0.8200000000000001 0.1799999999999999 0.28 0.72 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Company_s_Reputation" order="1">
+			<parents>Company_s_Reputation</parents>
+			<probabilities>0.8400000000000001 0.1599999999999999 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Company_s_Reputation" order="2">
+			<parents>Product_Reputation</parents>
+			<probabilities>0.888 0.112 0.8400000000000001 0.1599999999999999 0.44 0.5600000000000001 0.2 0.8</probabilities>
+		</cpt>
+	</dynamic>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.2937.0" name="Product Quality" faultnameformat="nodestate">
+			<plate leftwidth="133" rightwidth="100">21 32 703 575</plate>
+			<node id="High_Quality_of_the_Product">
+				<name>High Quality of the Product</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>194 112 324 193</position>
+				<comment>We mean hear a Mercedes-type quality.</comment>
+			</node>
+			<node id="Product_Reputation">
+				<name>Product Reputation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>226 271 330 336</position>
+			</node>
+			<node id="High_Production_Cost">
+				<name>High Production Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>424 170 548 247</position>
+			</node>
+			<node id="Aggressive_Advertizing">
+				<name>Aggressive Advertizing</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>369 74 476 140</position>
+			</node>
+			<node id="High_Price">
+				<name>High Price</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>393 282 479 335</position>
+			</node>
+			<node id="High_Sales">
+				<name>High Sales</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>322 374 412 430</position>
+			</node>
+			<node id="High_Profits">
+				<name>High Profits</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>461 453 555 511</position>
+				<barchart width="128" height="66" />
+			</node>
+			<node id="Large_Market_Share">
+				<name>Large Market Share</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>278 473 372 541</position>
+				<barchart width="128" height="66" />
+			</node>
+			<node id="Company_s_Reputation">
+				<name>Company&apos;s Reputation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>163 387 270 453</position>
+				<comment>This variable represents the reputation of the company, as impacted by the new product.</comment>
+			</node>
+			<node id="Company_s_Current_Reputation">
+				<name>Company&apos;s Current Reputation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>27 247 154 326</position>
+				<comment>This is the current reputation of the company, as earned over the years.</comment>
+			</node>
+			<textbox>
+				<caption>This file was exported from QGeNIe.</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>10 595 186 609</position>
+			</textbox>
+			<textbox>
+				<caption>Colors of arcs are based on the relationship types:</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>10 607 255 621</position>
+			</textbox>
+			<textbox>
+				<caption>Requirement</caption>
+				<font color="0000d0" name="Arial" size="8" />
+				<position>20 619 80 633</position>
+			</textbox>
+			<textbox>
+				<caption>Cause</caption>
+				<font color="00ccff" name="Arial" size="8" />
+				<position>20 631 51 645</position>
+			</textbox>
+			<textbox>
+				<caption>Inhibitor</caption>
+				<font color="ff0000" name="Arial" size="8" />
+				<position>20 643 57 657</position>
+			</textbox>
+			<textbox>
+				<caption>Barrier</caption>
+				<font color="c00000" name="Arial" size="8" />
+				<position>20 655 53 669</position>
+			</textbox>
+			<arcformat parent="Company_s_Current_Reputation" child="Product_Reputation" width="1" color="00ccff" />
+			<arcformat parent="High_Quality_of_the_Product" child="High_Production_Cost" width="1" color="00ccff" />
+			<arcformat parent="Aggressive_Advertizing" child="High_Production_Cost" width="1" color="00ccff" />
+			<arcformat parent="High_Production_Cost" child="High_Price" width="1" color="00ccff" />
+			<arcformat parent="High_Price" child="High_Sales" width="1" color="c00000" />
+			<arcformat parent="Product_Reputation" child="High_Sales" width="1" color="00ccff" />
+			<arcformat parent="High_Sales" child="High_Profits" width="1" color="00ccff" />
+			<arcformat parent="High_Production_Cost" child="High_Profits" width="1" color="c00000" />
+			<arcformat parent="High_Sales" child="Large_Market_Share" width="1" color="00ccff" />
+			<arcformat parent="Company_s_Current_Reputation" child="Company_s_Reputation" width="1" color="00ccff" />
+			<arcformat parent="Product_Reputation" child="Product_Reputation" order="1" width="1" color="00ccff" />
+			<arcformat parent="Aggressive_Advertizing" child="Product_Reputation" order="1" width="1" color="00ccff" />
+			<arcformat parent="High_Quality_of_the_Product" child="Product_Reputation" order="2" width="1" color="00ccff" />
+			<arcformat parent="Aggressive_Advertizing" child="High_Sales" order="1" width="1" color="00ccff" />
+			<arcformat parent="Company_s_Reputation" child="Company_s_Reputation" order="1" width="1" color="00ccff" />
+			<arcformat parent="Product_Reputation" child="Company_s_Reputation" order="2" width="1" color="00ccff" />
+		</genie>
+	</extensions>
+</smile>

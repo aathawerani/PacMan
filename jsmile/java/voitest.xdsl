@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="VentureEVPI" numsamples="1000">
+	<nodes>
+		<cpt id="Success">
+			<state id="Success" />
+			<state id="Failure" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Forecast">
+			<state id="Good" />
+			<state id="Moderate" />
+			<state id="Poor" />
+			<parents>Success</parents>
+			<probabilities>0.7 0.1 0.2 0.2 0.2 0.6</probabilities>
+		</cpt>
+		<decision id="Invest">
+			<state id="Invest" />
+			<state id="DoNotInvest" />
+			<parents>Forecast</parents>
+		</decision>
+		<utility id="Gain">
+			<parents>Invest Success</parents>
+			<utilities>10000 -5000 500 500</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.2411.0" name="VentureEVPI: Observation of forecast before making decision" faultnameformat="nodestate">
+			<comment>This GeNIe tutorial network demonstrates both value of information and  informational arcs in influence diagrams.\nThe decision model captures a business decision concerning investment of a sum of money into an uncertain business venture.</comment>
+			<node id="Success">
+				<name>Success of the venture</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="8" />
+				<position>162 82 238 118</position>
+				<comment>This variable describes uncertainty related to the success of a widget manufacturing plant. Quantification of the uncertainty is obtained from market statistics for widget producing ventures. We simplified the variable somewhat by assuming that it can take only two values: success or failure.</comment>
+			</node>
+			<node id="Forecast">
+				<name>Expert forecast</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="8" />
+				<position>102 22 178 58</position>
+				<comment>The information captured in this variable comes from T.J. Jones Company, Professional Consultants.</comment>
+			</node>
+			<node id="Invest">
+				<name>Investment decision</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="8" />
+				<position>22 82 98 118</position>
+				<comment>The decision is whether to invest $5,000 in a startup company. The options are to invest or not to invest. In the latter case, the money will be deposited risk-free in a bank.</comment>
+			</node>
+			<node id="Gain">
+				<name>Financial Gain</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="8" />
+				<position>102 142 178 178</position>
+				<comment>This node specifies the total financial gain resulting from the investment decision. Please note that the original investment amount is not included in the gain.</comment>
+			</node>
+			<textbox>
+				<caption>This GeNIe tutorial network demonstrates both value of information and  informational arcs in influence diagrams.\nThe decision model captures a business decision concerning investment of a sum of money into an uncertain business venture.</caption>
+				<font color="000000" name="Arial" size="10" bold="true" />
+				<position>251 28 446 172</position>
+			</textbox>
+			<textbox>
+				<caption>To compute the value of information of the expert forecast first delete the informational arc from Forecast to Invest.</caption>
+				<font color="000000" name="Arial" size="10" bold="true" />
+				<position>13 195 410 227</position>
+			</textbox>
+		</genie>
+	</extensions>
+</smile>
